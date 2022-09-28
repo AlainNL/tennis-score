@@ -8,6 +8,8 @@ const initialState = {
   advantage: null,
   winner: null,
   playing: true,
+  history: [
+  ],
 };
 
 // actions creators
