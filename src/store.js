@@ -73,6 +73,10 @@ if (action.type === "restart") {
             draft.winner = player;
             return;
           }
+          if (draft.advantage === player) {
+            draft.winner = player;
+            return;
+          }
           if (draft.advantage === null) {
             draft.advantage = player;
             return;
