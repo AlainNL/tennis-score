@@ -1,4 +1,4 @@
-import { createStore} from "redux";
+import { legacy_createStore as createStore} from "redux";
 import produce from "immer";
 
 // state
@@ -9,6 +9,7 @@ const initialState = {
   winner: null,
   playing: true,
   history: [
+
   ],
 };
 
@@ -29,7 +30,7 @@ if (action.type === "restart") {
     if (draft.winner) {
       draft.history.push({
         player1: draft.player1,
-        player2:draft.player2,
+        player2: draft.player2,
         winner: draft.winner,
       });
     }
