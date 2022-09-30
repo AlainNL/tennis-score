@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
-import { selectPlayerHasAdvantage, selectPlayerScore} from "./selectors";
+import { selectPlayerHasAdvantage, selectPlayerScore } from "./selectors";
 
 export function PlayerScore({ playerId, playerName }) {
-  const score = useSelector(selectPlayerScore(playerId));
+
   const hasAdvantage = useSelector(selectPlayerHasAdvantage(playerId));
+  const score = useSelector(selectPlayerScore(playerId));
 
   return (
       <div className="player-score">

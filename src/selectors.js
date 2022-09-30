@@ -6,6 +6,7 @@ export const selectPlayerScore = (playerId) => {
   return (state) => state[playerId];
 };
 
+
 export const selectDisplayText = (state) => {
   if (state.winner) {
     if (state.winner === "player1") {
@@ -31,4 +32,4 @@ export const selectDisplayText = (state) => {
 export const selectPlayerPoints = (playerId) => {
   return (state) =>
     state.history.filter((item) => item.winner === playerId).length;
-}
+};

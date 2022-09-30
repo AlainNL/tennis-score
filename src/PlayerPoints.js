@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { selectPlayerPoints } from "./selectors";
 
-export function PlayerPoints({ playerId, playerName}) {
+export function PlayerPoints({ playerId, playerName }) {
   const playerPoints = useSelector(selectPlayerPoints(playerId));
 
   return (
