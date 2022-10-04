@@ -63,3 +63,5 @@ export const selectPlayerPoints = (playerId) => {
   return (state) =>
     state.history.filter((item) => item.winner === playerId).length;
 };
+
+export const selectGameisPlaying = (state) => state.playing;

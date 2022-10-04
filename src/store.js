@@ -7,15 +7,17 @@ const initialState = {
   player2: 0,
   advantage: null,
   winner: null,
-  playing: true,
+  playing: false,
   history: [
-
   ],
 };
 
 // actions creators
 
-export const playPause = () => ({ type: "playPause" });
+const setPlaying = (playing) => ({
+  type: "setPlaying",
+  payload: playing,
+});
 
 export const restartGame = () => ({ type: "restart" });
 
@@ -23,6 +25,33 @@ export const pointScored = (player) => ({
   type: "pointScored",
   payload: { player: player },
 });
+
+export function autoplay(store) {
+    const isPlaying = store.getState().playing;
+    if (isPlaying || store.getState().winner) {
+      return;
+    }
+    store.dispatch(setPlaying(true));
+    playerNextPoint();
+    function playerNextPoint() {
+      if (store.getState().playing === false) {
+        return;
+      }
+      const time = 1000 + Math.random(Math.random () * 2000);
+      window.setTimeout(() => {
+        if (store.getState().playing === false) {
+          return;
+        }
+      const pointWinner = Math.random() > 0.5 ? "player1" : "player2";
+      store.dispatch(pointScored(pointWinner));
+      if (store.getState().winner) {
+        store.dispatch(setPlaying(false));
+        return;
+      }
+      playerNextPoint();
+    }, time);
+  }
+}
 
 function reducer(state = initialState, action) {
 if (action.type === "restart") {
