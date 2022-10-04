@@ -3,8 +3,8 @@ import { selectPlayerHasAdvantage, selectPlayerScore } from "./selectors";
 
 export function PlayerScore({ playerId, playerName }) {
 
+  const score = useSelector((state) => state[playerId]);
   const hasAdvantage = useSelector(selectPlayerHasAdvantage(playerId));
-  const score = useSelector(selectPlayerScore(playerId));
 
   return (
       <div className="player-score">
