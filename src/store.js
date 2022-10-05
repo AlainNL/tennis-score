@@ -37,7 +37,7 @@ export function autoplay(store) {
       if (store.getState().playing === false) {
         return;
       }
-      const time = 1000 + Math.random(Math.random () * 2000);
+      const time = 1000 + Math.floor(Math.random () * 2000);
       window.setTimeout(() => {
         if (store.getState().playing === false) {
           return;
@@ -67,24 +67,18 @@ if (action.type === "restart") {
       draft.player2 = 0;
       draft.advantage = null;
       draft.winner = null;
-      draft.playing = true;
+      draft.playing = false;
       });
     }
-    if (action.type ==="playPause") {
-      if (state.winner) {
-        return state;
-      }
+    if (action.type ==="setPlaying") {
       return produce(state, (draft) => {
-        draft.playing = !draft.playing;
+        draft.playing = action.payload;
       });
     }
     if (action.type==="pointScored") {
       const player = action.payload.player;
       const otherPlayer = player === "player1" ? "player2" : "player1";
       if (state.winner) {
-        return state;
-      }
-      if (state.playing === false) {
         return state;
       }
       return produce(state,(draft) => {

@@ -9,14 +9,14 @@ export function PlayerScore({ playerId, playerName }) {
 
   return (
       <div className="player-score">
-          <p>
+          <span>
             {playerName}
             {poinsBeforeWin === null
               ? ""
               : ` (encore ${poinsBeforeWin} ${poinsBeforeWin > 1 ? "points" : "point"
             })`}
-          </p>
-          <p>{(hasAdvantage ? "Avantage " : "") + score}</p>
+          </span>
+          <span>{(hasAdvantage ? "Avantage " : "") + score}</span>
       </div>
   );
 }

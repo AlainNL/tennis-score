@@ -7,13 +7,13 @@ export function PlayerPoints({ playerId, playerName }) {
   return (
     <div className="player-games">
       <p>{playerName}</p>
-      <p>
+      <span>
         {playerPoints === 0
           ? "Aucun jeu gagné"
           : playerPoints === 1
           ? "1 jeu gagné"
           : `${playerPoints} jeux gagnés`}
-      </p>
+      </span>
     </div>
   );
 }

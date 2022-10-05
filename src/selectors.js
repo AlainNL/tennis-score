@@ -44,8 +44,6 @@ export const selectDisplayText = (state) => {
     } else {
       return "Joueur 2 gagne";
     }
-  } else if (state.playing === false) {
-    return <p className="display">C'est la pause</p>;
   } else {
     let text = "Le score est: " + state.player1 + " - " + state.player2;
     if (state.advantage) {
